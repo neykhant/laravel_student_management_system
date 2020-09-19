@@ -23,6 +23,13 @@ Route::get("/show/{id}", "studentController@show");
 Route::post("/update/{id}", "studentController@update");
 Route::delete("/delete/{id}", "studentController@destroy");
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//authentication
+Route::get('/admin/registershow', 'Auth\RegisterController@showRegistrationForm')->name('registershow');
+Route::post('/admin/registerstore', 'Auth\RegisterController@register');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/admin/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/admin/login', 'Auth\LoginController@login')->name('login');
